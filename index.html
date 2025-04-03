@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban-Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="nav">  
+        <h1>Kanban Board</h1>
+       
+        <div id="comb">
+            <input id="to-do-inp" placeholder="Add  the task to be done:" type="text">
+            <button id="add-task-btn">Add task</button>
+        </div>
+    </div>
+    <div class="container">
+        <div id="todo-board" class="board">
+            <h4>Todo</h4>
+            
+            <p class="item">
+                Java basics 
+                <span class="button-container">
+                    <button class="edit">Edit</button> 
+                    <button class="del">Delete</button>
+                </span>
+            </p>
+            
+            
+        </div>
+        <div id="in-progress-board" class="board">
+            <h4>In-Progress</h4>
+        </div>
+        <div id="done-board" class="board">
+            <h4>Done</h4>
+        </div>
+    </div>
+ 
+   
+    <script src="script.js"></script>
+</body>
+
+</html>
