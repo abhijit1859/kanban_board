@@ -25,10 +25,20 @@ addTaskBtn.addEventListener('click', () => {
     const btnContainer = document.createElement("span");
     const delBtn = document.createElement("button")
     const editBtn = document.createElement("button")
+
+
+
+
+    //delbtn
     delBtn.classList.add('del');
+    delBtn.innerText = "Delete"
+
+
+
+    //editbtn
     editBtn.classList.add('edit')
     editBtn.innerText = 'Edit'
-    delBtn.innerText = "Delete"
+    
     taskCard.classList.add('item');
     taskCard.innerText = input;
     taskCard.setAttribute('draggable', 'true');
@@ -60,7 +70,13 @@ addTaskBtn.addEventListener('click', () => {
 
 
     ///edit option 
-    editBtn.addEventListener('click', () => {
+    editBtn.addEventListener('click', (e) => {
+
+        //selecting the referenvce of current board
+        const currBoard = e.target.parentElement.parentElement.parentElement;
+
+
+      
         console.log("hello");
 
         const div = document.createElement("div")
@@ -78,7 +94,7 @@ addTaskBtn.addEventListener('click', () => {
         //appending button and input field 
         div.appendChild(inp)
         div.appendChild(btn)
-        todoBoard.appendChild(div)
+        currBoard.appendChild(div)
         
  
 
