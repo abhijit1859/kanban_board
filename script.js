@@ -16,6 +16,42 @@ function attachDragEvents(target) {
 }
 
 
+function editText(p) {
+    let span = p.querySelector(".button-container") || p.querySelector("span");
+
+    let text = p.childNodes[0].nodeValue.trim();
+
+    let input = document.createElement("input");
+    input.type = "text";
+    input.value = text;
+
+    input.addEventListener("blur", function () {
+        saveText(p, input, span);
+    });
+
+    input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") saveText(p, input, span);
+    });
+
+    p.innerHTML = "";
+    p.appendChild(input);
+    p.appendChild(span);
+    input.focus();
+}
+
+
+function saveText(p, input, span) {
+    let text = input.value;
+    p.innerHTML = "";
+
+    let textNode = document.createTextNode(text + " ");
+    p.appendChild(textNode);
+    p.appendChild(span);
+}
+
+
+
+
 //add task functionality
 addTaskBtn.addEventListener('click', () => {
     const input = taskInp.value.trim();
@@ -24,7 +60,7 @@ addTaskBtn.addEventListener('click', () => {
     const taskCard = document.createElement("p");
     const btnContainer = document.createElement("span");
     const delBtn = document.createElement("button")
-    const editBtn = document.createElement("button")
+   
 
 
 
@@ -35,10 +71,8 @@ addTaskBtn.addEventListener('click', () => {
 
 
 
-    //editbtn
-    editBtn.classList.add('edit')
-    editBtn.innerText = 'Edit'
-    
+
+
     taskCard.classList.add('item');
     taskCard.innerText = input;
     taskCard.setAttribute('draggable', 'true');
@@ -68,7 +102,7 @@ addTaskBtn.addEventListener('click', () => {
         });
     });
 
-
+    taskCard.setAttribute("onclick", "editText(this)");
     ///edit option 
     editBtn.addEventListener('click', (e) => {
 
@@ -76,27 +110,27 @@ addTaskBtn.addEventListener('click', () => {
         const currBoard = e.target.parentElement.parentElement.parentElement;
 
 
-      
+
         console.log("hello");
 
         const div = document.createElement("div")
         div.classList.add("edit-div")
-        
+
         const inp = document.createElement("input");
         inp.classList.add('edit-inp');
         inp.setAttribute("placeholder", "Enter new to-do");
-     
+
 
         const btn = document.createElement("button");
         btn.innerText = "Done";
         btn.classList.add("edit-btn")
- 
+
         //appending button and input field 
         div.appendChild(inp)
         div.appendChild(btn)
         currBoard.appendChild(div)
-        
- 
+
+
 
 
 
