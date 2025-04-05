@@ -23,7 +23,7 @@ function editText(p) {
     let text = p.childNodes[0].nodeValue.trim();
 
     let input = document.createElement("input");
-    input.classList="editInp"
+    input.classList = "editInp"
     input.type = "text";
     input.value = text;
 
@@ -51,13 +51,30 @@ function saveText(p, input, span) {
     p.appendChild(span);
 }
 
+//saving tasks to local storage
 
+function saveTasks() {
+    const tasks = [];
+    document.querySelectorAll(".item").forEach(task => {
+        const text = task.childNodes[0].nodeValue.trim();
+        tasks.push(text)
+    })
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+}
 
+window.addEventListener("DOMContentLoaded", () => {
+    const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    savedTasks.forEach(taskText => {
+        taskInp.value = taskText;
+        addTaskBtn.click();  // reuse your logic
+    });
+});
 
 //add task functionality
 addTaskBtn.addEventListener('click', () => {
     const input = taskInp.value.trim();
-            if (!input) return;
+    if (!input) return;
 
 
     const taskCard = document.createElement("p");
@@ -93,7 +110,11 @@ addTaskBtn.addEventListener('click', () => {
                         </svg>`;
 
 
-
+    delBtn.addEventListener("click", () => {
+        const parent = delBtn.parentElement.parentElement;
+        parent.remove();
+        saveTasks();
+    });
     //editbtn
 
 

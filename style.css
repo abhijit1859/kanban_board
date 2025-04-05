@@ -8,7 +8,7 @@
 
 
 body{
-    background-color: black;
+    background-color: #ffffff;
     color: white;
 }
 
@@ -23,7 +23,7 @@ body{
 #comb{
     display: flex;
     align-items: center;
-    border: 2px solid #ccc;
+    border: 2px solid #0BC997;
     border-radius: 5px;
   
     width: fit-content;
@@ -40,13 +40,14 @@ body{
     width: 300px;
     padding: 10px;
     border-radius: 4px;
+    border: 1px solid #0BC997;
     box-shadow: rgb(36, 121, 212) 0px 20px 30px -10px;
 }
 
 #add-task-btn{
     height: 30px;
     width: 70px;
-    background-color: rgb(112, 166, 208);
+    background-color: #0BC997;
     border-radius: 2px;
 
 }
@@ -69,6 +70,7 @@ body{
   
 .board{
     margin-top: 10px;
+    background-color: #C0C6F4;
     border: 1px solid #e4e4e4 ;
     height: 70vh;  /* or a fixed value like 500px */
     overflow-y: auto;
@@ -79,6 +81,9 @@ body{
     
 }
 
+#nav h1{
+    color: black;
+}
 
   
 .board::-webkit-scrollbar {
@@ -107,7 +112,7 @@ body{
 .item {
     display: flex;
     justify-content: space-between;
-    background-color: white;
+    background-color: #F6FF7F;
     color: rgb(0, 0, 0);
     border: 1px solid green;
     padding: 15px 8px;
